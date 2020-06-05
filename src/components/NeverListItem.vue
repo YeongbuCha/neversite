@@ -8,9 +8,8 @@
       >
       <div>❌</div>
     </div>
-    <h3>NeverListItem</h3>
-    <h3>NEVER <span>{{ neverSite.content }}</span> TODAY</h3>
-    <img 
+    <h3>NO <span>{{ neverSite.content }}</span> TODAY</h3>
+    <img class="character-image"
     @click.exact="onImgClick"
     @click.ctrl.exact="onImgCtrlClick"
     :src="characterUrl" 
@@ -51,7 +50,6 @@ export default {
 .never-list-item {
   width: 100%;
   height: 100%;
-  border: 1px solid green;
   position: relative;
 }
 
@@ -64,10 +62,26 @@ export default {
   left: 0;
   z-index: 1;
   background-color: rgba(3, 3, 3, 0.3);
+  margin: 0px auto;
   width: 100%;
   height: 100%;
+  border-radius: 100px;
+
   font-size: 8rem;
+  cursor: pointer;
 }
 
+.character-image {
+  cursor: pointer;
+}
 
+h3 {
+  margin-top: 10px;
+  font-size: 1.8rem;
+}
+
+span {
+  font-weight: 700;
+  font-size: 2.2rem;
+}
 </style>

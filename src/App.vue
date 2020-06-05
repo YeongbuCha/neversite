@@ -1,22 +1,30 @@
 <template>
   <div id="app">
+    <h1>I WILL NEVER VISIT HERE TODAY</h1>
     <NeverInput @inputSubmit="onInputSubmit" />
     <NeverList 
       @imgClick="changeVisited"
       @imgCtrlClick="deleteSite"
       :neverSites="neverSites" />
+    <div class="my-helpers">
+      <p class="my-helper">Click : Change Status</p>
+      <p class="my-helper">Ctrl + Click : Delete</p>
+    </div>
+    <MyFooter />
   </div>
 </template>
 
 <script>
 import NeverInput from './components/NeverInput.vue'
 import NeverList from './components/NeverList.vue'
+import MyFooter from './components/MyFooter.vue'
 
 export default {
   name: 'App',
   components: {
     NeverInput,
-    NeverList
+    NeverList,
+    MyFooter
   },
   data() {
     return {
@@ -26,6 +34,7 @@ export default {
   methods: {
     changeVisited(neverSite) {
       neverSite.isVisited = !neverSite.isVisited
+      localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
     deleteSite(neverSite) {
       const idx = this.neverSites.indexOf(neverSite)
@@ -37,7 +46,7 @@ export default {
         this.neverSites.push(neverSite)
         localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } 
-      else if (this.neverSites.length < 16) {
+      else if (this.neverSites.length < 12) {
         this.neverSites.push(neverSite)
         localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } else {
@@ -109,10 +118,31 @@ table {
   height: 100%;
   padding: 100px;
   padding-top: 0;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Architects Daughter', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
+
+h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+.my-helpers {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.my-helper {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 </style>
