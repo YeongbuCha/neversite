@@ -20,11 +20,7 @@ export default {
   },
   data() {
     return {
-      neverSites: [
-        { id: 1, content: 'YOUTUBE', isVisited: true},
-        { id: 2, content: 'NETFLIX', isVisited: false},
-        { id: 3, content: 'HIPHOPLE', isVisited: false},
-      ]
+      neverSites: this.getNeverSites()
     }
   },
   methods: {
@@ -34,16 +30,31 @@ export default {
     deleteSite(neverSite) {
       const idx = this.neverSites.indexOf(neverSite)
       this.neverSites.splice(idx, 1)
+      localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
     onInputSubmit(neverSite) {
-      if (this.neverSites.length < 16) {
+      if (this.neverSites === []) {
         this.neverSites.push(neverSite)
+        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
+      } 
+      else if (this.neverSites.length < 16) {
+        this.neverSites.push(neverSite)
+        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } else {
         this.neverSites.pop()
         this.neverSites.push(neverSite)
+        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
+      }
+    },
+    getNeverSites() {
+      const loadedNeverSites = localStorage.getItem('neverSites')
+      if (loadedNeverSites !== null) {
+        return JSON.parse(loadedNeverSites)
+      } else {
+        return []
       }
     }
-  }
+  },
 }
 </script>
 

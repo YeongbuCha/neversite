@@ -5,7 +5,7 @@
         v-model="newInput" 
         @keypress.enter="onInputSubmit"
         type="text"
-        placeholder="Type and Enter to add neversite"
+        placeholder="Type and Enter to add NEVERSITE"
         >
   </div>
 </template>

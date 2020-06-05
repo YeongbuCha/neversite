@@ -1,11 +1,19 @@
 <template>
   <div class="never-list-item">
+    <div 
+      class="x-block" 
+      v-if="neverSite.isVisited"
+      @click.exact="onImgClick"
+      @click.ctrl.exact="onImgCtrlClick"
+      >
+      <div>❌</div>
+    </div>
     <h3>NeverListItem</h3>
     <h3>NEVER <span>{{ neverSite.content }}</span> TODAY</h3>
     <img 
     @click.exact="onImgClick"
     @click.ctrl.exact="onImgCtrlClick"
-    :src="characterUrl()" 
+    :src="characterUrl" 
     alt="character image">
   </div>
 </template>
@@ -20,10 +28,6 @@ export default {
     neverSite: Object
   },
   methods: {
-		characterUrl() {
-			const randomCharacter = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
-			return `${BASE_IMAGE_URL}${randomCharacter}`
-    },
     onImgClick() {
       console.log("on img click")
       this.$emit('imgClick', this.neverSite)
@@ -32,6 +36,12 @@ export default {
       console.log("on img crl click")
       this.$emit('imgCtrlClick', this.neverSite)
     }   
+  },
+  computed: {
+    characterUrl() {
+			const randomCharacter = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
+			return `${BASE_IMAGE_URL}${randomCharacter}`
+    },
   }
 }
 </script>
@@ -42,5 +52,22 @@ export default {
   width: 100%;
   height: 100%;
   border: 1px solid green;
+  position: relative;
 }
+
+.x-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(3, 3, 3, 0.3);
+  width: 100%;
+  height: 100%;
+  font-size: 8rem;
+}
+
+
 </style>
