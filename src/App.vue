@@ -6,6 +6,15 @@
       @imgClick="changeVisited"
       @imgCtrlClick="deleteSite"
       :neverSites="neverSites" />
+    <h1>THINGS TO DO</h1>
+    <div class="todo-wrapper">
+      <TodoInput @todoInputSubmit="onTodoInputSubmit" />
+      <TodoList 
+        @todoClick="changeCompleted"
+        @todoCtrlClick="deleteTodo"
+        :todos="todos" />
+    </div>
+
     <MyFooter />
   </div>
 </template>
@@ -13,6 +22,10 @@
 <script>
 import NeverInput from './components/NeverInput.vue'
 import NeverList from './components/NeverList.vue'
+
+import TodoList from './components/TodoList.vue'
+import TodoInput from './components/TodoInput.vue'
+
 import MyFooter from './components/MyFooter.vue'
 
 export default {
@@ -20,11 +33,16 @@ export default {
   components: {
     NeverInput,
     NeverList,
+
+    TodoInput,
+    TodoList,
+
     MyFooter
   },
   data() {
     return {
-      neverSites: this.getNeverSites()
+      neverSites: this.getNeverSites(),
+      todos: this.getTodos()
     }
   },
   methods: {
@@ -32,25 +50,45 @@ export default {
       neverSite.isVisited = !neverSite.isVisited
       localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
+    changeCompleted(todo) {
+      todo.isCompleted = !todo.isCompleted
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+
     deleteSite(neverSite) {
-      const idx = this.neverSites.indexOf(neverSite)
-      this.neverSites.splice(idx, 1)
+      const siteIdx = this.neverSites.indexOf(neverSite)
+      this.neverSites.splice(siteIdx, 1)
       localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
+    deleteTodo(todo) {
+      const todoIdx = this.todos.indexOf(todo)
+      this.todos.splice(todoIdx, 1)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+
     onNeverInputSubmit(neverSite) {
       if (this.neverSites === []) {
         this.neverSites.push(neverSite)
-        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
-      } 
-      else if (this.neverSites.length < 8) {
+      } else if (this.neverSites.length < 8) {
         this.neverSites.push(neverSite)
-        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } else {
         this.neverSites.pop()
         this.neverSites.push(neverSite)
-        localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       }
+      localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
+    onTodoInputSubmit(todo) {
+      if (this.todos === []) {
+        this.todos.push(todo)
+      } else if (this.todos.length < 12) {
+        this.todos.push(todo)
+      } else {
+        this.todos.pop()
+        this.todos.push(todo)
+      }
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+
     getNeverSites() {
       const loadedNeverSites = localStorage.getItem('neverSites')
       if (loadedNeverSites !== null) {
@@ -58,7 +96,15 @@ export default {
       } else {
         return []
       }
-    }
+    },
+    getTodos() {
+      const loadedTodos = localStorage.getItem('todos')
+      if (loadedTodos !== null) {
+        return JSON.parse(loadedTodos)
+      } else {
+        return []
+      }
+    },
   },
 }
 </script>
@@ -124,6 +170,11 @@ table {
 h1 {
   font-size: 3rem;
   margin-top: 20px;
+}
+
+.todo-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
 }
 
 </style>

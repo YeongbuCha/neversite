@@ -1,6 +1,6 @@
 <template>
   <div class="never-list">
-    <div class="wrapper">
+    <div class="never-wrapper">
       <NeverListItem 
         @imgClick="onImgClick"
         @imgCtrlClick="onImgCtrlClick"
@@ -40,7 +40,7 @@ export default {
   /* border: 1px solid red; */
   margin: 20px 20px 0 20px;
 }
-.wrapper {
+.never-wrapper {
   height: 100%;
   width: 100%;
   display: grid;

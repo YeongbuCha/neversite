@@ -28,11 +28,9 @@ export default {
   },
   methods: {
     onImgClick() {
-      console.log("on img click")
       this.$emit('imgClick', this.neverSite)
     },
     onImgCtrlClick() {
-      console.log("on img crl click")
       this.$emit('imgCtrlClick', this.neverSite)
     }   
   },
