@@ -1,8 +1,12 @@
 <template>
   <div class="never-list-item">
     <h3>NeverListItem</h3>
-    <p>{{ neverSite.content }}</p>
-    <img :src="characterUrl()" alt="">
+    <h3>NEVER <span>{{ neverSite.content }}</span> TODAY</h3>
+    <img 
+    @click.exact="onImgClick"
+    @click.ctrl.exact="onImgCtrlClick"
+    :src="characterUrl()" 
+    alt="character image">
   </div>
 </template>
 
@@ -19,7 +23,15 @@ export default {
 		characterUrl() {
 			const randomCharacter = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
 			return `${BASE_IMAGE_URL}${randomCharacter}`
-		},    
+    },
+    onImgClick() {
+      console.log("on img click")
+      this.$emit('imgClick', this.neverSite)
+    },
+    onImgCtrlClick() {
+      console.log("on img crl click")
+      this.$emit('imgCtrlClick', this.neverSite)
+    }   
   }
 }
 </script>

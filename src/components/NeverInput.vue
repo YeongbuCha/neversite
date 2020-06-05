@@ -23,7 +23,7 @@ export default {
       if (this.newInput.trim()) {
         this.$emit('inputSubmit', {
           id: Date.now(),
-          content: this.newInput,
+          content: this.newInput.toUpperCase(),
           isVisited: false
         })
       }

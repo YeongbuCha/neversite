@@ -2,6 +2,8 @@
   <div class="never-list">
     <div class="wrapper">
       <NeverListItem 
+        @imgClick="onImgClick"
+        @imgCtrlClick="onImgCtrlClick"
         v-for="neverSite in neverSites" 
         :key="neverSite.id"
         :neverSite="neverSite" />
@@ -19,6 +21,14 @@ export default {
   },
   props: {
     neverSites: Array
+  },
+  methods: {
+    onImgClick(neverSite) {
+      this.$emit('imgClick', neverSite)
+    },
+    onImgCtrlClick(neverSite) {
+      this.$emit('imgCtrlClick', neverSite)
+    }
   }
 }
 </script>

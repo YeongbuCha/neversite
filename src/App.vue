@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <NeverInput @inputSubmit="onInputSubmit" />
-    <NeverList :neverSites="neverSites" />
+    <NeverList 
+      @imgClick="changeVisited"
+      @imgCtrlClick="deleteSite"
+      :neverSites="neverSites" />
   </div>
 </template>
 
@@ -18,15 +21,19 @@ export default {
   data() {
     return {
       neverSites: [
-        { id: 1, content: 'Youtube', isVisited: true},
-        { id: 2, content: 'Netflix', isVisited: false},
-        { id: 3, content: 'Hiphople', isVisited: false},
+        { id: 1, content: 'YOUTUBE', isVisited: true},
+        { id: 2, content: 'NETFLIX', isVisited: false},
+        { id: 3, content: 'HIPHOPLE', isVisited: false},
       ]
     }
   },
   methods: {
-    updateVisited(neverSite) {
+    changeVisited(neverSite) {
       neverSite.isVisited = !neverSite.isVisited
+    },
+    deleteSite(neverSite) {
+      const idx = this.neverSites.indexOf(neverSite)
+      this.neverSites.splice(idx, 1)
     },
     onInputSubmit(neverSite) {
       if (this.neverSites.length < 16) {
