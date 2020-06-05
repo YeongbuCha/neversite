@@ -1,10 +1,11 @@
 <template>
   <div class="never-input">
     <input 
-      v-model="newInput" 
-      @keypress.enter="onInputSubmit"
+      v-model="newNeverInput" 
+      @keypress.enter="onNeverInputSubmit"
       type="text"
       placeholder="Type and Enter to add NEVERSITE"
+      autofocus
       >
   </div>
 </template>
@@ -14,19 +15,19 @@ export default {
   name: 'NeverInput',
   data() {
     return {
-      newInput: ''
+      newNeverInput: ''
     }
   },
   methods: {
-    onInputSubmit() {
-      if (this.newInput.trim()) {
-        this.$emit('inputSubmit', {
+    onNeverInputSubmit() {
+      if (this.newNeverInput.trim()) {
+        this.$emit('neverInputSubmit', {
           id: Date.now(),
-          content: this.newInput.toUpperCase(),
+          content: this.newNeverInput.toUpperCase(),
           isVisited: false
         })
       }
-      this.newInput = ''
+      this.newNeverInput = ''
     }
   }
 }
@@ -34,14 +35,12 @@ export default {
 
 <style scoped>
 .never-input {
-  border: 1px solid blue;
-
   margin-top: 20px;
 }
 
 input {
   text-align: center;
-  width: 80%;
+  width: 90%;
   height: 50px;
   font-size: 1.2rem;
   border: 3px solid black;

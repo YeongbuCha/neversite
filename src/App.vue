@@ -1,15 +1,11 @@
 <template>
   <div id="app">
     <h1>I WILL NEVER VISIT HERE TODAY</h1>
-    <NeverInput @inputSubmit="onInputSubmit" />
+    <NeverInput @neverInputSubmit="onNeverInputSubmit" />
     <NeverList 
       @imgClick="changeVisited"
       @imgCtrlClick="deleteSite"
       :neverSites="neverSites" />
-    <div class="my-helpers">
-      <p class="my-helper">Click : Change Status</p>
-      <p class="my-helper">Ctrl + Click : Delete</p>
-    </div>
     <MyFooter />
   </div>
 </template>
@@ -41,12 +37,12 @@ export default {
       this.neverSites.splice(idx, 1)
       localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
     },
-    onInputSubmit(neverSite) {
+    onNeverInputSubmit(neverSite) {
       if (this.neverSites === []) {
         this.neverSites.push(neverSite)
         localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } 
-      else if (this.neverSites.length < 12) {
+      else if (this.neverSites.length < 8) {
         this.neverSites.push(neverSite)
         localStorage.setItem('neverSites', JSON.stringify(this.neverSites))
       } else {
@@ -128,21 +124,6 @@ table {
 h1 {
   font-size: 3rem;
   margin-top: 20px;
-}
-
-.my-helpers {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.my-helper {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 </style>

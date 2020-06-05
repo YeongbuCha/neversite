@@ -37,8 +37,8 @@ export default {
 
 
 .never-list {
-  border: 1px solid red;
-  margin-top: 30px;
+  /* border: 1px solid red; */
+  margin: 20px 20px 0 20px;
 }
 .wrapper {
   height: 100%;
