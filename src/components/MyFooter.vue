@@ -1,8 +1,9 @@
 <template>
   <div class="my-footer">
     <div class="my-helpers">
-      <p class="my-helper">Ctrl + Click : Delete</p>
       <p class="my-helper">Click : Change Status</p>
+      <p class="my-helper">/</p>
+      <p class="my-helper">Ctrl + Click : Delete</p>
     </div>
     <div class="my-footer-items">
       <span class="my-footer-item">
@@ -30,9 +31,8 @@ export default {
 .my-footer {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
 
   position: absolute;
   z-index: 1;
@@ -56,7 +56,6 @@ a {
 .my-helpers {
   margin-top: 10px;
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   font-size: 1.2rem;
@@ -64,7 +63,7 @@ a {
 }
 
 .my-helper {
-  margin-bottom: 5px;
+  margin-right: 15px;
 }
 
 </style>

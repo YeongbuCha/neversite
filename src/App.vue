@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>I WILL NEVER VISIT HERE TODAY</h1>
+    <h1>I WILL NEVER VISIT "HERE" TODAY</h1>
     <NeverInput @neverInputSubmit="onNeverInputSubmit" />
     <NeverList 
       @imgClick="changeVisited"
@@ -80,7 +80,7 @@ export default {
     onTodoInputSubmit(todo) {
       if (this.todos === []) {
         this.todos.push(todo)
-      } else if (this.todos.length < 12) {
+      } else if (this.todos.length < 8) {
         this.todos.push(todo)
       } else {
         this.todos.pop()

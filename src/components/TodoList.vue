@@ -35,12 +35,11 @@ export default {
 
 <style scoped>
 div.todo-list {
-  border: 1px solid blue;
   margin-top: 20px;
 }
 
 .todo-list-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 360px);
 }
 </style>

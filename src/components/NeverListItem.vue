@@ -75,10 +75,13 @@ export default {
 h3 {
   margin-top: 10px;
   font-size: 1.8rem;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 span {
   font-weight: 700;
   font-size: 2.2rem;
+  color: #d63031;
 }
 </style>
