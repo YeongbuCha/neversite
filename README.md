@@ -1,5 +1,7 @@
 # Neverever
 
+![image](https://user-images.githubusercontent.com/59906546/83947234-c853b300-a850-11ea-8399-6bf643b35992.png)
+
 ## Project setup
 ```
 npm install
