@@ -1,0 +1,20 @@
+{
+    "name": "Never Ever",
+    "version": "1.0",
+    "description": "This extension with Neversite and todos.",
+    "manifest_version": 2,
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "chrome_url_overrides" : {
+        "newtab": "index.html"
+    },
+    "browser_action": {
+        "default_icon": "icon16.png"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
