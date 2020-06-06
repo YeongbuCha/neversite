@@ -13,10 +13,6 @@
         <i class="fab fa-github"></i>
         <a href="https://github.com/YeongbuCha/neversite">github</a>
       </span>
-      <span class="my-footer-item">
-        <i class="fab fa-instagram"></i>
-        <a href="https://www.instagram.com/yeongbu/">instagram</a>
-      </span>
     </div>
   </div>
 </template>
@@ -33,10 +29,10 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
+  margin-bottom: 15px;
   position: absolute;
   z-index: 1;
-  bottom: 5%;
+  bottom: 0;
   right: 5%;
 }
 
@@ -51,6 +47,7 @@ a {
 
 .my-footer-item, a, i {
   margin-left: 3px;
+  margin-bottom: 7px;
 }
 
 .my-helpers {
@@ -65,5 +62,6 @@ a {
 .my-helper {
   margin-right: 15px;
 }
+
 
 </style>

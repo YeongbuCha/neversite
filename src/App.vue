@@ -6,7 +6,10 @@
       @imgClick="changeVisited"
       @imgCtrlClick="deleteSite"
       :neverSites="neverSites" />
-    <h1>THINGS TO DO</h1>
+    <div class="todo-title">
+      <h1>THINGS TO DO</h1>
+      <div class="clear-done" @click="clearDone"><i class="fas fa-trash-alt"></i> clear done</div>
+    </div>
     <div class="todo-wrapper">
       <TodoInput @todoInputSubmit="onTodoInputSubmit" />
       <TodoList 
@@ -63,6 +66,12 @@ export default {
     deleteTodo(todo) {
       const todoIdx = this.todos.indexOf(todo)
       this.todos.splice(todoIdx, 1)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
+    },
+
+    clearDone() {
+      const unCompletedTodos = this.todos.filter(todo => todo.isCompleted === false)
+      this.todos = unCompletedTodos
       localStorage.setItem('todos', JSON.stringify(this.todos))
     },
 
@@ -165,16 +174,31 @@ table {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #b8e994;
 }
 
 h1 {
   font-size: 3rem;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .todo-wrapper {
   display: grid;
   grid-template-columns: 1fr 5fr;
+}
+
+.todo-title {
+  position: relative;
+}
+
+.clear-done {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 90%;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 </style>

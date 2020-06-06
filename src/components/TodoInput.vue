@@ -40,6 +40,8 @@ div.todo-input {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 5px;
+
 }
 
 textarea {
@@ -49,7 +51,7 @@ textarea {
   font-size: 1.2rem;
   border: 2px solid black;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
   white-space: pre-wrap;
 }
 
